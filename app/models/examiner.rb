@@ -1,0 +1,4 @@
+class Examiner < ActiveRecord::Base
+  attr_accessible :name
+
+end
