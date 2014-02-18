@@ -1,32 +1,54 @@
 .transcript
-  =form_for @claim, url: {action: "update"}, html: {class: "transcribe_form"} do |f|
-    = f.label :claim_date
-    = f.datetime_field :claim_date
+  %form{:action=>"/claims/#{params[:id]}", :method=>"PATCH"}
+    %label{:for=>"claim_date"} Claim Date
+    %input{:id=>"claim_date", :type=>"datetime", :name=>"claim[claim_date]"}
     %br
-    = f.label :incident_date
-    = f.datetime_field :incident_date
+    %label{:for=>"incident_date"} Incident Date
+    %input{:id=>"incident_date", :type=>"datetime", :name=>"claim[incident_date]"}
     %br
-    = f.label :claimant_name
-    = f.text_field :claimant_name
+    %label{:for=>"resolution_date"} Resolution Date
+    %input{:id=>"resolution_date", :type=>"datetime", :name=>"claim[resolution_date]"}
     %br
-    = f.label :claim_number
-    = f.number_field :claim_number
+    %label{:for=>"claim_number"} Claim Number
+    %input{:id=>"claim_number", :type=>"number", :name=>"claim[claim_number]"}
     %br
-    = f.label :record_number
-    = f.number_field :record_number
+    %label{:for=>"record_number"} Claim Record Number
+    %input{:id=>"record_number", :type=>"number", :name=>"claim[record_number]"}
     %br
-    = f.label :incident_address
-    = f.text_field :incident_address
+    %label{:for=>"incident_address"} Incident Address
+    %input{:id=>"incident_address", :type=>"text", :name=>"claim[incident_address]"}
     %br
-    = f.label :incident_address_type
-    = f.text_field :incident_address_type
+    %label{:for=>"incident_address_type"} Incident Address Type
+    %input{:id=>"incident_address_type", :type=>"text", :name=>"claim[incident_address_type]"}
     %br
-    = f.label :total_claimed
-    = f.number_field :total_claimed
+    %label{:for=>"total_claimed"} Total Claimed
+    %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]"}
     %br
-    = f.label :total_awarded
-    = f.number_field :total_awarded
+    %label{:for=>"total_awarded"} Total Awarded
+    %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]"}
+    %h2 About the examiner
+    %label{:for=>"examiner_name"} Examiner Name
+    %input{:id=>"examiner_name", :type=>"text", :name=>"examiner[name]"}
+    %h2 About the claimant
+    %label{:for=>"claimant_name"} Claimant Name
+    %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]"}
     %br
-    = f.submit "Transcribe!"
+    %label{:for=>"previous_address"} Previous Address
+    %input{:id=>"previous_address", :type=>"text", :name=>"person[previous_address]"}
+    %br
+    %label{:for=>"current_address"} Current Address
+    %input{:id=>"current_address", :type=>"text", :name=>"person[current_address]"}
+    %br
+    %label{:for=>"role"} Role
+    %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"claimant"}
+    %br
+    %label{:for=>"gender"} Gender
+    %input{:id=>"gender", :type=>"text", :name=>"person[gender]"}
+    %br
+    %label{:for=>"race"} Race
+    %input{:id=>"race", :type=>"text", :name=>"person[race]"}
+    %br
+
+    %button{:type=>"submit", :value=>"submit"} Transcribe!
 .page
   %img{:src=>image_path("draft_riots_pg75.jpeg")}
