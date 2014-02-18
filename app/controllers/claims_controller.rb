@@ -4,7 +4,8 @@ class ClaimsController < ApplicationController
 	end
 
 	def show
-		@claim = Claim.find(params[:id])
+		# @claim = Claim.find(params[:id])
+    render 'diagnostics'
 	end
 
 	def edit
@@ -13,8 +14,9 @@ class ClaimsController < ApplicationController
   end
 
   def update
-    @claim = Claim.find(params[:id])
-    redirect_to "/claims/#{@claim.id}"
-	end
+    @claim = Claim.find(params[:id]) 
+    @claim.update_attributes(params[:claim])
+    redirect_to @claim
+  end
 
 end
