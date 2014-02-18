@@ -4,15 +4,17 @@ class ClaimsController < ApplicationController
 	end
 
 	def show
-		# @claim = Claim.find(params[:id])
+		@claim = Claim.find(params[:id])
 	end
 
 	def edit
-		@claim = Claim.new #Using new claim to test 
-	end
+		@claim = Claim.find(params[:id]) 
+    @claim = Claim.create if @claim.nil? 
+  end
 
-	def update
-    render "diagnostics"
+  def update
+    @claim = Claim.find(params[:id])
+    redirect_to (action: "show", id: @claim.id, status: 302)
 	end
 
 end
