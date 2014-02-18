@@ -1,3 +1,32 @@
-.transcript FORM GOES HERE
+.transcript
+  =form_for @claim, url: {action: "update"}, html: {class: "transcribe_form"} do |f|
+    = f.label :claim_date
+    = f.text_field :claim_date
+    %br
+    = f.label :incident_date
+    = f.text_field :incident_date
+    %br
+    = f.label :claimant_name
+    = f.text_field :claimant_name
+    %br
+    = f.label :claim_number
+    = f.text_field :claim_number
+    %br
+    = f.label :record_number
+    = f.text_field :record_number
+    %br
+    = f.label :incident_address
+    = f.text_field :incident_address
+    %br
+    = f.label :incident_address_type
+    = f.text_field :incident_address_type
+    %br
+    = f.label :total_claimed
+    = f.text_field :total_claimed
+    %br
+    = f.label :total_awarded
+    = f.text_field :total_awarded
+    %br
+    = f.submit "Transcribe!"
 .page
   %img{:src=>image_path("draft_riots_pg75.jpeg")}

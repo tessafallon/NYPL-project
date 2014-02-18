@@ -5,4 +5,7 @@ class Claim < ActiveRecord::Base
     :inclusion => { :in => ["Home", "Workplace", "Other"],
     :message => "%{value} is not one of the stated options of home, workplace, or other."}
 
+    def claimant_name
+    end
+
 end

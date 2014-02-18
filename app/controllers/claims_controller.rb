@@ -8,10 +8,11 @@ class ClaimsController < ApplicationController
 	end
 
 	def edit
-		# @claim = Claim.find(parms[:id])
+		@claim = Claim.new #Using new claim to test 
 	end
 
 	def update
+    # @claim.save
 	end
 
 end
