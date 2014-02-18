@@ -12,7 +12,7 @@ class ClaimsController < ApplicationController
 	end
 
 	def update
-    # @claim.save
+    render "diagnostics"
 	end
 
 end
