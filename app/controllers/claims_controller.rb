@@ -14,7 +14,7 @@ class ClaimsController < ApplicationController
 
   def update
     @claim = Claim.find(params[:id])
-    redirect_to (action: "show", id: @claim.id, status: 302)
+    redirect_to "/claims/#{@claim.id}"
 	end
 
 end
