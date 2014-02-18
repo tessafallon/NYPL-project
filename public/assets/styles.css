@@ -1,0 +1,13 @@
+.user-input{
+	background-color: red;
+	display: inline-block;
+}
+
+.actual-book{
+	background-color: blue;
+	display: inline-block;
+}
+
+.highlights{
+	background-color: green;
+}
