@@ -8,16 +8,11 @@ $(document).ready( function() {
     return false;
   });
 
-  function getMousePos(e, $imgDiv) {
-    var pos = {};
-    if(e) {
-      pos.x = e.pageX;
-      pos.y = e.pageY;
-    }
-    else {
-      pos.x = window.event.clientX + $imgDiv.scrollLeft - $imgDiv.clientLeft;
-      pos.y = window.event.clientY + $imgDiv.scrollTop - $imgDiv.clientTop;
-    }
+  function getMousePos(e) {
+    var pos = {
+      x: e.pageX,
+      y: e.pageY
+    };
     return pos;
   }
 
