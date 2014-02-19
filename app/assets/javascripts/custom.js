@@ -13,8 +13,8 @@ $(document).ready( function() {
 
   function getMousePos(e) {
     var pos = {
-      x: e.pageX, //- imgDivOffset.left,
-      y: e.pageY //- imgDivOffset.top
+      x: e.pageX,
+      y: e.pageY
     };
     return pos;
   }
