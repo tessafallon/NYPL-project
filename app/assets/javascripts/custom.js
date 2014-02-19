@@ -2,8 +2,11 @@ $(document).ready( function() {
 
   var $img = $(".transcribe-image-holder");
 
-  $img.on("click", function() {
-    alert("hello");
+  $img.on("mousedown", function() {
+    console.log("hello");
   });
 
+  $img.on("mouseup", function() {
+    console.log("goodbye");
+  });
 });
