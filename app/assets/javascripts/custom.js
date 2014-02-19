@@ -1,8 +1,10 @@
 $(document).ready( function() {
 
   var $imgDiv = $(".transcribe-image-holder");
-
   var $img = $imgDiv.find("img");
+
+  var startCoordinate = {};
+  var endCoordinate = {};
 
   $img.on("dragstart", function() {
     return false;
@@ -17,10 +19,16 @@ $(document).ready( function() {
   }
 
   $imgDiv.on("mousedown", function(e) {
-    console.log(getMousePos(e));
+    startCoordinate = getMousePos(e);
+    console.log(startCoordinate);
   });
 
   $imgDiv.on("mouseup", function(e) {
-    console.log(getMousePos(e));
+    endCoordinate = getMousePos(e);
+    console.log(endCoordinate);
+    var $overlay = $("<div class='overlay'></div>").appendTo($imgDiv);
+    $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
+            .css("top", startCoordinate.y)
+            .css("left", startCoordinate.x);
   });
 });
