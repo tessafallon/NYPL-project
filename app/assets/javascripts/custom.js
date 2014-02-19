@@ -15,13 +15,13 @@ $(document).ready( function() {
 
   function getMousePos(e) {
     var pos = {
-      x: e.pageX,
-      y: e.pageY
+      x: e.pageX - $imgDiv.offset().left,
+      y: e.pageY - $imgDiv.offset().top
     };
     return pos;
   }
 
-  $highlighter.on("click", function(boxColor) {
+  $highlighter.on("click", function() {
     boxColor = this.className.split(" ")[1];
     console.log(boxColor);
   });
@@ -34,6 +34,7 @@ $(document).ready( function() {
   $imgDiv.on("mouseup", function(e) {
     endCoordinate = getMousePos(e);
     console.log(endCoordinate);
+    console.log(boxColor);
     var $overlay = $("<div class='overlay'></div>").appendTo($imgDiv);
     $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
             .css("top", startCoordinate.y)
