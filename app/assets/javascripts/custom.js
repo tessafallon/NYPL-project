@@ -3,6 +3,7 @@ $(document).ready( function() {
   var $imgDiv = $(".transcribe-image-holder");
   var imgDivOffset = $imgDiv.offset();
   var $img = $imgDiv.find("img");
+  var $highlighter = $(".highlighter");
 
   var startCoordinate = {};
   var endCoordinate = {};

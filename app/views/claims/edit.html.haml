@@ -2,67 +2,67 @@
   %form{:action=>"/claims/#{params[:id]}", :method=>"post"}
 
   %input{:id=>"claim_date", :type=>"datetime", :name=>"claim[claim_date]"}
-  %span.pink
+  %span.highlighter.pink
     %label{:for=>"claim_date"} Claim Date
   %br
   %input{:id=>"incident_date", :type=>"date", :name=>"claim[incident_date]"}
-  %span.green
+  %span.highlighter.green
     %label{:for=>"incident_date"} Incident Date
   %br
   %input{:id=>"resolution_date", :type=>"date", :name=>"claim[resolution_date]"}
-  %span
+  %span.highlighter
     %label{:for=>"resolution_date"} Resolution Date
   %br
   %input{:id=>"claim_number", :type=>"number", :name=>"claim[claim_number]"}
-  %span
+  %span.highlighter
     %label{:for=>"claim_number"} Claim Number
   %br
   %input{:id=>"record_number", :type=>"number", :name=>"claim[record_number]"}
-  %span
+  %span.highlighter
     %label{:for=>"record_number"} Claim Record Number
   %br
   %input{:id=>"incident_address", :type=>"text", :name=>"claim[incident_address]"}
-  %span
+  %span.highlighter
     %label{:for=>"incident_address"} Incident Address
   %br
   %input{:id=>"incident_address_type", :type=>"text", :name=>"claim[incident_address_type]"}
-  %span
+  %span.highlighter
     %label{:for=>"incident_address_type"} Incident Address Type
   %br
   %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]", :step=>"0.01"}
-  %span
+  %span.highlighter
     %label{:for=>"total_claimed"} Total Claimed
   %br
   %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]", :step=>"0.01"}
-  %span
+  %span.highlighter
     %label{:for=>"total_awarded"} Total Awarded
   %h2 About the examiner
   %input{:id=>"examiner_name", :type=>"text", :name=>"examiner[name]"}
-  %span
+  %span.highlighter
     %label{:for=>"examiner_name"} Examiner Name
   %h2 About the claimant
   %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]"}
-  %span
+  %span.highlighter
     %label{:for=>"claimant_name"} Claimant Name
   %br
   %input{:id=>"previous_address", :type=>"text", :name=>"person[previous_address]"}
-  %span
+  %span.highlighter
     %label{:for=>"previous_address"} Previous Address
   %br
   %input{:id=>"current_address", :type=>"text", :name=>"person[current_address]"}
-  %span
+  %span.highlighter
     %label{:for=>"current_address"} Current Address
   %br
   %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"Claimant"}
-  %span
+  %span.highlighter
     %label{:for=>"role"} Role
   %br
   %input{:id=>"gender", :type=>"text", :name=>"person[gender]"}
-  %span
+  %span.highlighter
     %label{:for=>"gender"} Gender
   %br
   %input{:id=>"race", :type=>"text", :name=>"person[race]"}
-  %span
+  %span.highlighter
     %label{:for=>"race"} Race
   %br
   - form_authenticity_token
