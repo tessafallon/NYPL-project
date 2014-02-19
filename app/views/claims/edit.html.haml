@@ -1,13 +1,13 @@
 .transcript
-  %form{:action=>"/claims/#{params[:id]}", :method=>"PATCH"}
+  %form{:action=>"/claims/#{params[:id]}", :method=>"post"}
     %label{:for=>"claim_date"} Claim Date
     %input{:id=>"claim_date", :type=>"datetime", :name=>"claim[claim_date]"}
     %br
     %label{:for=>"incident_date"} Incident Date
-    %input{:id=>"incident_date", :type=>"datetime", :name=>"claim[incident_date]"}
+    %input{:id=>"incident_date", :type=>"date", :name=>"claim[incident_date]"}
     %br
     %label{:for=>"resolution_date"} Resolution Date
-    %input{:id=>"resolution_date", :type=>"datetime", :name=>"claim[resolution_date]"}
+    %input{:id=>"resolution_date", :type=>"date", :name=>"claim[resolution_date]"}
     %br
     %label{:for=>"claim_number"} Claim Number
     %input{:id=>"claim_number", :type=>"number", :name=>"claim[claim_number]"}
@@ -22,10 +22,10 @@
     %input{:id=>"incident_address_type", :type=>"text", :name=>"claim[incident_address_type]"}
     %br
     %label{:for=>"total_claimed"} Total Claimed
-    %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]"}
+    %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]", :step=>"0.01"}
     %br
     %label{:for=>"total_awarded"} Total Awarded
-    %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]"}
+    %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]", :step=>"0.01"}
     %h2 About the examiner
     %label{:for=>"examiner_name"} Examiner Name
     %input{:id=>"examiner_name", :type=>"text", :name=>"examiner[name]"}
@@ -48,7 +48,9 @@
     %label{:for=>"race"} Race
     %input{:id=>"race", :type=>"text", :name=>"person[race]"}
     %br
-
+    - form_authenticity_token
+    %input{:name=>"authenticity_token", :type=>"hidden", :value=>form_authenticity_token} 
+    
     %button{:type=>"submit", :value=>"submit"} Transcribe!
 .page
   %img{:src=>image_path("draft_riots_pg75.jpeg")}
