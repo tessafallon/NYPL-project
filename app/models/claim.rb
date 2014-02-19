@@ -7,7 +7,5 @@ class Claim < ActiveRecord::Base
 
     def claimant_name
     end
-    
-   
 
 end

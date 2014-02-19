@@ -40,7 +40,7 @@
     %input{:id=>"current_address", :type=>"text", :name=>"person[current_address]"}
     %br
     %label{:for=>"role"} Role
-    %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"claimant"}
+    %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"Claimant"}
     %br
     %label{:for=>"gender"} Gender
     %input{:id=>"gender", :type=>"text", :name=>"person[gender]"}
@@ -52,5 +52,5 @@
     %input{:name=>"authenticity_token", :type=>"hidden", :value=>form_authenticity_token} 
     
     %button{:type=>"submit", :value=>"submit"} Transcribe!
-.page
+.transcribe-image-holder
   %img{:src=>image_path("draft_riots_pg75.jpeg")}
