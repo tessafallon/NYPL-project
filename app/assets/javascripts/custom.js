@@ -1,6 +1,7 @@
 $(document).ready( function() {
 
   var $imgDiv = $(".transcribe-image-holder");
+  var imgDivOffset = $imgDiv.offset();
   var $img = $imgDiv.find("img");
 
   var startCoordinate = {};
@@ -12,8 +13,8 @@ $(document).ready( function() {
 
   function getMousePos(e) {
     var pos = {
-      x: e.pageX,
-      y: e.pageY
+      x: e.pageX, //- imgDivOffset.left,
+      y: e.pageY //- imgDivOffset.top
     };
     return pos;
   }
@@ -29,6 +30,8 @@ $(document).ready( function() {
     var $overlay = $("<div class='overlay'></div>").appendTo($imgDiv);
     $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
             .css("top", startCoordinate.y)
-            .css("left", startCoordinate.x);
+            .css("left", startCoordinate.x)
+            .css("height", endCoordinate.y - startCoordinate.y)
+            .css("width", endCoordinate.x - startCoordinate.x);
   });
 });

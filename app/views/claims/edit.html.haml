@@ -1,56 +1,73 @@
 .transcript
   %form{:action=>"/claims/#{params[:id]}", :method=>"post"}
+
+  %input{:id=>"claim_date", :type=>"datetime", :name=>"claim[claim_date]"}
+  %span.pink
     %label{:for=>"claim_date"} Claim Date
-    %input{:id=>"claim_date", :type=>"datetime", :name=>"claim[claim_date]"}
-    %br
+  %br
+  %input{:id=>"incident_date", :type=>"date", :name=>"claim[incident_date]"}
+  %span.green
     %label{:for=>"incident_date"} Incident Date
-    %input{:id=>"incident_date", :type=>"date", :name=>"claim[incident_date]"}
-    %br
+  %br
+  %input{:id=>"resolution_date", :type=>"date", :name=>"claim[resolution_date]"}
+  %span
     %label{:for=>"resolution_date"} Resolution Date
-    %input{:id=>"resolution_date", :type=>"date", :name=>"claim[resolution_date]"}
-    %br
+  %br
+  %input{:id=>"claim_number", :type=>"number", :name=>"claim[claim_number]"}
+  %span
     %label{:for=>"claim_number"} Claim Number
-    %input{:id=>"claim_number", :type=>"number", :name=>"claim[claim_number]"}
-    %br
+  %br
+  %input{:id=>"record_number", :type=>"number", :name=>"claim[record_number]"}
+  %span
     %label{:for=>"record_number"} Claim Record Number
-    %input{:id=>"record_number", :type=>"number", :name=>"claim[record_number]"}
-    %br
+  %br
+  %input{:id=>"incident_address", :type=>"text", :name=>"claim[incident_address]"}
+  %span
     %label{:for=>"incident_address"} Incident Address
-    %input{:id=>"incident_address", :type=>"text", :name=>"claim[incident_address]"}
-    %br
+  %br
+  %input{:id=>"incident_address_type", :type=>"text", :name=>"claim[incident_address_type]"}
+  %span
     %label{:for=>"incident_address_type"} Incident Address Type
-    %input{:id=>"incident_address_type", :type=>"text", :name=>"claim[incident_address_type]"}
-    %br
+  %br
+  %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]", :step=>"0.01"}
+  %span
     %label{:for=>"total_claimed"} Total Claimed
-    %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]", :step=>"0.01"}
-    %br
+  %br
+  %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]", :step=>"0.01"}
+  %span
     %label{:for=>"total_awarded"} Total Awarded
-    %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]", :step=>"0.01"}
-    %h2 About the examiner
+  %h2 About the examiner
+  %input{:id=>"examiner_name", :type=>"text", :name=>"examiner[name]"}
+  %span
     %label{:for=>"examiner_name"} Examiner Name
-    %input{:id=>"examiner_name", :type=>"text", :name=>"examiner[name]"}
-    %h2 About the claimant
+  %h2 About the claimant
+  %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]"}
+  %span
     %label{:for=>"claimant_name"} Claimant Name
-    %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]"}
-    %br
+  %br
+  %input{:id=>"previous_address", :type=>"text", :name=>"person[previous_address]"}
+  %span
     %label{:for=>"previous_address"} Previous Address
-    %input{:id=>"previous_address", :type=>"text", :name=>"person[previous_address]"}
-    %br
+  %br
+  %input{:id=>"current_address", :type=>"text", :name=>"person[current_address]"}
+  %span
     %label{:for=>"current_address"} Current Address
-    %input{:id=>"current_address", :type=>"text", :name=>"person[current_address]"}
-    %br
+  %br
+  %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"Claimant"}
+  %span
     %label{:for=>"role"} Role
-    %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"Claimant"}
-    %br
+  %br
+  %input{:id=>"gender", :type=>"text", :name=>"person[gender]"}
+  %span
     %label{:for=>"gender"} Gender
-    %input{:id=>"gender", :type=>"text", :name=>"person[gender]"}
-    %br
+  %br
+  %input{:id=>"race", :type=>"text", :name=>"person[race]"}
+  %span
     %label{:for=>"race"} Race
-    %input{:id=>"race", :type=>"text", :name=>"person[race]"}
-    %br
-    - form_authenticity_token
-    %input{:name=>"authenticity_token", :type=>"hidden", :value=>form_authenticity_token} 
-    
-    %button{:type=>"submit", :value=>"submit"} Transcribe!
+  %br
+  - form_authenticity_token
+  %input{:name=>"authenticity_token", :type=>"hidden", :value=>form_authenticity_token} 
+  
+  %button{:type=>"submit", :value=>"submit"} Transcribe!
 .transcribe-image-holder
   %img{:src=>image_path("draft_riots_pg75.jpeg")}

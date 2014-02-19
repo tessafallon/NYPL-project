@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .transcript{
-	background-color: red;
+	background-color: transparent;
 	display: inline-block;
 	height: 50%;
 	width: 45%;
@@ -31,8 +31,15 @@ img{
 }
 
 .overlay{
-	height: 25px;
-	width: 25px;
-	background-color: lightgreen;
+	background-color: yellow;
+	opacity: 0.3;
 	position: fixed;
+}
+
+.pink{
+	background-color: rgba(255, 50, 50, 0.4);
+}
+
+.green{
+	background-color: rgba(50, 255, 50, 0.4);
 }
