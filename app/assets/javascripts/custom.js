@@ -7,6 +7,7 @@ $(document).ready( function() {
 
   var startCoordinate = {};
   var endCoordinate = {};
+  var boxColor = "";
 
   $img.on("dragstart", function() {
     return false;
@@ -19,6 +20,11 @@ $(document).ready( function() {
     };
     return pos;
   }
+
+  $highlighter.on("click", function(boxColor) {
+    boxColor = this.className.split(" ")[1];
+    console.log(boxColor);
+  });
 
   $imgDiv.on("mousedown", function(e) {
     startCoordinate = getMousePos(e);
@@ -33,6 +39,7 @@ $(document).ready( function() {
             .css("top", startCoordinate.y)
             .css("left", startCoordinate.x)
             .css("height", endCoordinate.y - startCoordinate.y)
-            .css("width", endCoordinate.x - startCoordinate.x);
+            .css("width", endCoordinate.x - startCoordinate.x)
+            .addClass(boxColor);
   });
 });
