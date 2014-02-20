@@ -22,9 +22,7 @@ class ClaimsController < ApplicationController
     else
       person = Person.create(person_params)
     end
-    # debugger
     render 'diagnostics'
-
   end
 
   def claim_params

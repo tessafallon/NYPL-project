@@ -1,4 +1,4 @@
-class Claim < ActiveRecord::Base
+  class Claim < ActiveRecord::Base
   # attr_accessible :claim_date, :incident_date, :resolution_date, :claim_number, :record_number, :incident_address, :incident_address_type, :total_claimed, :total_awarded
 
   has_many :people
@@ -15,7 +15,7 @@ class Claim < ActiveRecord::Base
   end
 
   def claimant_attr(attribute)
-    self.claimants.first.send(attribute.to_sym) if self.claimants
+    self.claimants.first.send(attribute.to_sym) if self.claimants.length > 0
   end
 
 end
