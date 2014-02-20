@@ -1,72 +1,76 @@
 .transcript
-  %form{:action=>"/claims/#{params[:id]}", :method=>"post"}
+  
+  .form-div  
+    %h1
+      Claim Information
+    %form{:action=>"/claims/#{params[:id]}", :method=>"post"}
 
-    %input{:id=>"claim_date", :type=>"date", :name=>"claim[claim_date]", :value=>@claim.claim_date}
-    %span.highlighter.hotpink
-      %label{:for=>"claim_date"} Claim Date
-    %br
-    %input{:id=>"incident_date", :type=>"date", :name=>"claim[incident_date]", :value=>@claim.incident_date}
-    %span.highlighter.green
-      %label{:for=>"incident_date"} Incident Date
-    %br
-    %input{:id=>"resolution_date", :type=>"date", :name=>"claim[resolution_date]", :value=>@claim.resolution_date}
-    %span.highlighter.gold
-      %label{:for=>"resolution_date"} Resolution Date
-    %br
-    %input{:id=>"claim_number", :type=>"number", :name=>"claim[claim_number]", :value=>@claim.claim_number}
-    %span.highlighter.fuchsia
-      %label{:for=>"claim_number"} Claim Number
-    %br
-    %input{:id=>"record_number", :type=>"number", :name=>"claim[record_number]", :value=>@claim.record_number}
-    %span.highlighter.orange
-      %label{:for=>"record_number"} Claim Record Number
-    %br
-    %input{:id=>"incident_address", :type=>"text", :name=>"claim[incident_address]", :value=>@claim.incident_address}
-    %span.highlighter.lightskyblue
-      %label{:for=>"incident_address"} Incident Address
-    %br
-    %input{:id=>"incident_address_type", :type=>"text", :name=>"claim[incident_address_type]", :value=>@claim.incident_address_type}
-    %span.highlighter.midnightblue
-      %label{:for=>"incident_address_type"} Incident Address Type
-    %br
-    %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]", :step=>"0.01", :value=>@claim.total_claimed}
-    %span.highlighter.yellowgreen
-      %label{:for=>"total_claimed"} Total Claimed
-    %br
-    %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]", :step=>"0.01", :value=>@claim.total_awarded}
-    %span.highlighter.crimson
-      %label{:for=>"total_awarded"} Total Awarded
-    %h2 About the examiner
-    %input{:id=>"examiner_name", :type=>"text", :name=>"examiner[name]"}
-    %span.highlighter.coral
-      %label{:for=>"examiner_name"} Examiner Name
-    %h2 About the claimant
-    %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]", :value=>@claim.claimant_attr("name")}
-    %span.highlighter.yellow
-      %label{:for=>"claimant_name"} Claimant Name
-    %br
-    %input{:id=>"previous_address", :type=>"text", :name=>"person[previous_address]", :value=>@claim.claimant_attr("previous_address")}
-    %span.highlighter.cyan
-      %label{:for=>"previous_address"} Previous Address
-    %br
-    %input{:id=>"current_address", :type=>"text", :name=>"person[current_address]", :value=>@claim.claimant_attr("current_address")}
-    %span.highlighter.darkorchid
-      %label{:for=>"current_address"} Current Address
-    %br
-    %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"claimant"}
-    %input{:id=>"claim_id", :type=>"hidden", :name=>"person[claim_id]", :value=> params[:id]}
-    %br
-    %input{:id=>"gender", :type=>"text", :name=>"person[gender]", :value=>@claim.claimant_attr("gender")}
-    %span.highlighter.teal
-      %label{:for=>"gender"} Gender
-    %br
-    %input{:id=>"race", :type=>"text", :name=>"person[race]", :value=>@claim.claimant_attr("race")}
-    %span.highlighter.dodgerblue
-      %label{:for=>"race"} Race
-    %br
-    - form_authenticity_token
-    %input{:name=>"authenticity_token", :type=>"hidden", :value=>form_authenticity_token} 
-    
-    %button{:type=>"submit", :value=>"submit"} Transcribe!
+      %input{:id=>"claim_date", :type=>"date", :name=>"claim[claim_date]", :value=>@claim.claim_date}
+      %span.highlighter.hotpink
+        %label{:for=>"claim_date"} Claim Date
+      %br
+      %input{:id=>"incident_date", :type=>"date", :name=>"claim[incident_date]", :value=>@claim.incident_date}
+      %span.highlighter.green
+        %label{:for=>"incident_date"} Incident Date
+      %br
+      %input{:id=>"resolution_date", :type=>"date", :name=>"claim[resolution_date]", :value=>@claim.resolution_date}
+      %span.highlighter.gold
+        %label{:for=>"resolution_date"} Resolution Date
+      %br
+      %input{:id=>"claim_number", :type=>"number", :name=>"claim[claim_number]", :value=>@claim.claim_number}
+      %span.highlighter.fuchsia
+        %label{:for=>"claim_number"} Claim Number
+      %br
+      %input{:id=>"record_number", :type=>"number", :name=>"claim[record_number]", :value=>@claim.record_number}
+      %span.highlighter.orange
+        %label{:for=>"record_number"} Claim Record Number
+      %br
+      %input{:id=>"incident_address", :type=>"text", :name=>"claim[incident_address]", :value=>@claim.incident_address}
+      %span.highlighter.lightskyblue
+        %label{:for=>"incident_address"} Incident Address
+      %br
+      %input{:id=>"incident_address_type", :type=>"text", :name=>"claim[incident_address_type]", :value=>@claim.incident_address_type}
+      %span.highlighter.midnightblue
+        %label{:for=>"incident_address_type"} Incident Address Type
+      %br
+      %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]", :step=>"0.01", :value=>@claim.total_claimed}
+      %span.highlighter.yellowgreen
+        %label{:for=>"total_claimed"} Total Claimed
+      %br
+      %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]", :step=>"0.01", :value=>@claim.total_awarded}
+      %span.highlighter.crimson
+        %label{:for=>"total_awarded"} Total Awarded
+      %h2 About the examiner
+      %input{:id=>"examiner_name", :type=>"text", :name=>"examiner[name]"}
+      %span.highlighter.coral
+        %label{:for=>"examiner_name"} Examiner Name
+      %h2 About the claimant
+      %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]", :value=>@claim.claimant_attr("name")}
+      %span.highlighter.yellow
+        %label{:for=>"claimant_name"} Claimant Name
+      %br
+      %input{:id=>"previous_address", :type=>"text", :name=>"person[previous_address]", :value=>@claim.claimant_attr("previous_address")}
+      %span.highlighter.cyan
+        %label{:for=>"previous_address"} Previous Address
+      %br
+      %input{:id=>"current_address", :type=>"text", :name=>"person[current_address]", :value=>@claim.claimant_attr("current_address")}
+      %span.highlighter.darkorchid
+        %label{:for=>"current_address"} Current Address
+      %br
+      %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"claimant"}
+      %input{:id=>"claim_id", :type=>"hidden", :name=>"person[claim_id]", :value=> params[:id]}
+      %br
+      %input{:id=>"gender", :type=>"text", :name=>"person[gender]", :value=>@claim.claimant_attr("gender")}
+      %span.highlighter.teal
+        %label{:for=>"gender"} Gender
+      %br
+      %input{:id=>"race", :type=>"text", :name=>"person[race]", :value=>@claim.claimant_attr("race")}
+      %span.highlighter.dodgerblue
+        %label{:for=>"race"} Race
+      %br
+      - form_authenticity_token
+      %input{:name=>"authenticity_token", :type=>"hidden", :value=>form_authenticity_token} 
+      
+      %button{:type=>"submit", :value=>"submit"} Transcribe!
 .transcribe-image-holder
   %img{:src=>image_path("draft_riots_pg75.jpeg")}

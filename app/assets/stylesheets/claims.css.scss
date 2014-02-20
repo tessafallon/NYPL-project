@@ -2,11 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body{
+	font-family: 'Istok Web', sans-serif;
+}
+
 .transcript{
-	background-color: rgb(229,  214, 184);
 	display: inline-block;
 	height: 50%;
 	width: 45%;
+	padding: 12% 0; 
+	padding-top: 20.5%;
+	position: relative;
+	bottom: 10.2em;
+
+	background: -webkit-radial-gradient(ellipse, rgb(235, 225, 200) 60%, rgb(223,  194, 156));
+}
+
+.form-div{
+	position: relative;
+	padding-left: 25%;
+	font-size: large;
 }
 
 .page{
@@ -32,7 +47,6 @@ img{
 
 @mixin highlighter-background($r, $g, $b){
 	background-color: rgba($r,$g,$b,0.2);
-	// opacity: 0.5;
 }
 
 .hotpink{
