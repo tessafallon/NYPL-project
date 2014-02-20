@@ -16,7 +16,7 @@ class ClaimsController < ApplicationController
   def update
     @claim = Claim.find(params[:id]) 
     @claim.update_attributes(params[:claim])
-    @person = Person.new(params[:person])
+    @person = Person.new(person_params)
     # debugger
     redirect_to @claim
   end
