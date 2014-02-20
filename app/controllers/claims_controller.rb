@@ -16,7 +16,7 @@ class ClaimsController < ApplicationController
   def update
     @claim = Claim.find(params[:id]) 
     @claim.update_attributes(params[:claim])
-    @person = Person.new(person_params)
+    @person = Person.create(person_params)
     # debugger
     render 'diagnostics'
 
@@ -27,7 +27,7 @@ class ClaimsController < ApplicationController
   end
 
    def person_params
-    params.require(:person).permit(:name, :previous_address, :current_address, :role, :gender, :race)
+    params.require(:person).permit(:name, :previous_address, :current_address, :role, :gender, :race, :claim_id)
   end
 
 end
