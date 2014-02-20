@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218154232) do
+ActiveRecord::Schema.define(version: 20140218154151) do
 
   create_table "claims", force: true do |t|
-    t.integer "person_id"
     t.date    "claim_date"
     t.date    "incident_date"
     t.date    "resolution_date"
@@ -24,46 +23,16 @@ ActiveRecord::Schema.define(version: 20140218154232) do
     t.string  "incident_address_type"
     t.float   "total_claimed"
     t.float   "total_awarded"
-    t.integer "examiner_id"
-  end
-
-  create_table "damages", force: true do |t|
-    t.string  "description"
-    t.integer "quantity"
-    t.string  "unit"
-    t.float   "total_cost"
-    t.boolean "overcharge?"
-    t.integer "claim_id"
-  end
-
-  create_table "examiners", force: true do |t|
-    t.string "name"
-  end
-
-  create_table "paragraph_people", force: true do |t|
-    t.integer "paragraph_id"
-    t.integer "person_id"
-  end
-
-  create_table "paragraphs", force: true do |t|
-    t.integer "claim_id"
-    t.string  "type"
-    t.text    "text"
   end
 
   create_table "people", force: true do |t|
-    t.string "name"
-    t.string "previous_address"
-    t.string "current_address"
-    t.string "role"
-    t.string "gender"
-    t.string "race"
-  end
-
-  create_table "relationships", force: true do |t|
-    t.integer "person_id"
-    t.integer "associate_id"
-    t.string  "description"
+    t.string  "name"
+    t.string  "previous_address"
+    t.string  "current_address"
+    t.string  "role"
+    t.string  "gender"
+    t.string  "race"
+    t.integer "claim_id"
   end
 
 end

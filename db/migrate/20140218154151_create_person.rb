@@ -7,6 +7,7 @@ class CreatePerson < ActiveRecord::Migration
       t.string :role
       t.string :gender
       t.string :race
+      t.integer :claim_id
     end
   end
 end

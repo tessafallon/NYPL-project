@@ -1,7 +1,6 @@
 class CreateClaim < ActiveRecord::Migration
   def change
     create_table :claims do |t|
-      t.belongs_to :person
       t.date :claim_date
       t.date :incident_date
       t.date :resolution_date
@@ -11,7 +10,6 @@ class CreateClaim < ActiveRecord::Migration
       t.string :incident_address_type
       t.float :total_claimed
       t.float :total_awarded
-      t.belongs_to :examiner
     end
   end
 end
