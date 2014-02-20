@@ -18,7 +18,8 @@ class ClaimsController < ApplicationController
     @claim.update_attributes(params[:claim])
     @person = Person.new(person_params)
     # debugger
-    redirect_to @claim
+    render 'diagnostics'
+
   end
 
   def claim_params
