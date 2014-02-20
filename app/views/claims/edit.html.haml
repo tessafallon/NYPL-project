@@ -1,10 +1,7 @@
 .transcript
   %form{:action=>"/claims/#{params[:id]}", :method=>"post"}
-    - if @claim.claim_date
-      - claim_date = @claim.claim_date
-    - if Person.find_by_claim_id(@claim.id).name
-      - claimant_name = Person.find_by_claim_id(@claim.id).name
-    %input{:id=>"claim_date", :type=>"datetime", :name=>"claim[claim_date]", :value=>claim_date}
+
+    %input{:id=>"claim_date", :type=>"datetime", :name=>"claim[claim_date]"}
     %span.highlighter.pink
       %label{:for=>"claim_date"} Claim Date
     %br
@@ -44,7 +41,7 @@
     %span.highlighter
       %label{:for=>"examiner_name"} Examiner Name
     %h2 About the claimant
-    %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]", :value=>claimant_name}
+    %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]", :value=>@claimant_name}
     %span.highlighter
       %label{:for=>"claimant_name"} Claimant Name
     %br
