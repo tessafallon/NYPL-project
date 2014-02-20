@@ -1,7 +1,7 @@
 .transcript
   %form{:action=>"/claims/#{params[:id]}", :method=>"post"}
 
-    %input{:id=>"claim_date", :type=>"datetime", :name=>"claim[claim_date]"}
+    %input{:id=>"claim_date", :type=>"date", :name=>"claim[claim_date]"}
     %span.highlighter.pink
       %label{:for=>"claim_date"} Claim Date
     %br
