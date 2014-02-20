@@ -53,9 +53,8 @@
     %span.highlighter
       %label{:for=>"current_address"} Current Address
     %br
-    %input{:id=>"role", :type=>"text", :name=>"person[role]", :value=>"Claimant"}
-    %span.highlighter
-      %label{:for=>"role"} Role
+    %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"Claimant"}
+    %input{:id=>"claim_id", :type=>"hidden", :name=>"person[claim_id]", :value=> params[:id]}
     %br
     %input{:id=>"gender", :type=>"text", :name=>"person[gender]"}
     %span.highlighter
