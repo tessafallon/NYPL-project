@@ -1,39 +1,39 @@
 .transcript
   %form{:action=>"/claims/#{params[:id]}", :method=>"post"}
 
-    %input{:id=>"claim_date", :type=>"date", :name=>"claim[claim_date]"}
+    %input{:id=>"claim_date", :type=>"date", :name=>"claim[claim_date]", :value=>@claim.claim_date}
     %span.highlighter.pink
       %label{:for=>"claim_date"} Claim Date
     %br
-    %input{:id=>"incident_date", :type=>"date", :name=>"claim[incident_date]"}
+    %input{:id=>"incident_date", :type=>"date", :name=>"claim[incident_date]", :value=>@claim.incident_date}
     %span.highlighter.green
       %label{:for=>"incident_date"} Incident Date
     %br
-    %input{:id=>"resolution_date", :type=>"date", :name=>"claim[resolution_date]"}
+    %input{:id=>"resolution_date", :type=>"date", :name=>"claim[resolution_date]", :value=>@claim.resolution_date}
     %span.highlighter
       %label{:for=>"resolution_date"} Resolution Date
     %br
-    %input{:id=>"claim_number", :type=>"number", :name=>"claim[claim_number]"}
+    %input{:id=>"claim_number", :type=>"number", :name=>"claim[claim_number]", :value=>@claim.claim_number}
     %span.highlighter
       %label{:for=>"claim_number"} Claim Number
     %br
-    %input{:id=>"record_number", :type=>"number", :name=>"claim[record_number]"}
+    %input{:id=>"record_number", :type=>"number", :name=>"claim[record_number]", :value=>@claim.record_number}
     %span.highlighter
       %label{:for=>"record_number"} Claim Record Number
     %br
-    %input{:id=>"incident_address", :type=>"text", :name=>"claim[incident_address]"}
+    %input{:id=>"incident_address", :type=>"text", :name=>"claim[incident_address]", :value=>@claim.incident_address}
     %span.highlighter
       %label{:for=>"incident_address"} Incident Address
     %br
-    %input{:id=>"incident_address_type", :type=>"text", :name=>"claim[incident_address_type]"}
+    %input{:id=>"incident_address_type", :type=>"text", :name=>"claim[incident_address_type]", :value=>@claim.incident_address_type}
     %span.highlighter
       %label{:for=>"incident_address_type"} Incident Address Type
     %br
-    %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]", :step=>"0.01"}
+    %input{:id=>"total_claimed", :type=>"number", :name=>"claim[total_claimed]", :step=>"0.01", :value=>@claim.total_claimed}
     %span.highlighter
       %label{:for=>"total_claimed"} Total Claimed
     %br
-    %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]", :step=>"0.01"}
+    %input{:id=>"total_awarded", :type=>"number", :name=>"claim[total_awarded]", :step=>"0.01", :value=>@claim.total_awarded}
     %span.highlighter
       %label{:for=>"total_awarded"} Total Awarded
     %h2 About the examiner
@@ -49,18 +49,18 @@
     %span.highlighter
       %label{:for=>"previous_address"} Previous Address
     %br
-    %input{:id=>"current_address", :type=>"text", :name=>"person[current_address]"}
+    %input{:id=>"current_address", :type=>"text", :name=>"person[current_address]", :value=>@claim.claimant_attr("current_address")}
     %span.highlighter
       %label{:for=>"current_address"} Current Address
     %br
     %input{:id=>"role", :type=>"hidden", :name=>"person[role]", :value=>"claimant"}
     %input{:id=>"claim_id", :type=>"hidden", :name=>"person[claim_id]", :value=> params[:id]}
     %br
-    %input{:id=>"gender", :type=>"text", :name=>"person[gender]"}
+    %input{:id=>"gender", :type=>"text", :name=>"person[gender]", :value=>@claim.claimant_attr("gender")}
     %span.highlighter
       %label{:for=>"gender"} Gender
     %br
-    %input{:id=>"race", :type=>"text", :name=>"person[race]"}
+    %input{:id=>"race", :type=>"text", :name=>"person[race]", :value=>@claim.claimant_attr("race")}
     %span.highlighter
       %label{:for=>"race"} Race
     %br
