@@ -41,11 +41,11 @@
     %span.highlighter
       %label{:for=>"examiner_name"} Examiner Name
     %h2 About the claimant
-    %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]", :value=>@claimant_name}
+    %input{:id=>"claimant_name", :type=>"text", :name=>"person[name]", :value=>@claim.claimant_attr("name")}
     %span.highlighter
       %label{:for=>"claimant_name"} Claimant Name
     %br
-    %input{:id=>"previous_address", :type=>"text", :name=>"person[previous_address]"}
+    %input{:id=>"previous_address", :type=>"text", :name=>"person[previous_address]", :value=>@claim.claimant_attr("previous_address")}
     %span.highlighter
       %label{:for=>"previous_address"} Previous Address
     %br

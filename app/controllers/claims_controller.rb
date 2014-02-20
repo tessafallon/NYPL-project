@@ -11,13 +11,17 @@ class ClaimsController < ApplicationController
 	def edit
 		@claim = Claim.find(params[:id]) 
     @claim = Claim.create if @claim.nil?
-    @claimant_name = @claim.claimant_attr("name")
   end
 
   def update
-    @claim = Claim.find(params[:id]) 
-    @claim.update_attributes(params[:claim])
-    @person = Person.create(person_params)
+    claim = Claim.find(params[:id]) 
+    claim.update_attributes(params[:claim])
+    person = claim.claimants.first
+    if person
+      person.update_attributes(person_params)
+    else
+      person = Person.create(person_params)
+    end
     # debugger
     render 'diagnostics'
 
