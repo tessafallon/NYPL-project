@@ -25,4 +25,8 @@ class ClaimsController < ApplicationController
     params.require(:claim).permit(:claim_date, :incident_date, :resolution_date, :claim_number, :record_number, :incident_address, :incident_address_type, :total_claimed, :total_awarded)
   end
 
+   def person_params
+    params.require(:person).permit(:name, :previous_address, :current_address, :role, :gender, :race)
+  end
+
 end
