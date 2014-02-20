@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .transcript{
-	background-color: transparent;
+	background-color: rgb(229,  214, 184);
 	display: inline-block;
 	height: 50%;
 	width: 45%;
@@ -30,10 +30,65 @@ img{
 	position: absolute;
 }
 
-.pink{
-	background-color: rgba(255, 50, 50, 0.4);
+@mixin highlighter-background($r, $g, $b){
+	background-color: rgba($r,$g,$b,0.2);
+	// opacity: 0.5;
+}
+
+.hotpink{
+	@include highlighter-background(255, 105, 180);
 }
 
 .green{
-	background-color: rgba(50, 255, 50, 0.4);
+	@include highlighter-background(34, 139,  34);
+}
+
+.gold{
+	@include highlighter-background(128, 128,   0);
+}
+
+.fuchsia{
+	@include highlighter-background(255,   0, 255);
+}
+
+.orange{
+	@include highlighter-background(255, 165,   0);
+}
+
+.lightskyblue{
+	@include highlighter-background(135, 206, 250);
+}
+
+.midnightblue{
+	@include highlighter-background(25,  25, 112);
+}
+
+.yellowgreen{
+	@include highlighter-background(154, 205,  50);
+}
+
+.crimson{
+	@include highlighter-background(220,  20,  60);
+}
+
+.coral{
+	@include highlighter-background(255, 127,  80);
+}
+
+.yellow{
+	@include highlighter-background(255, 255,   0);
+}
+
+.cyan{
+	@include highlighter-background(0, 255, 255);
+}
+
+.dodgerblue{
+	@include highlighter-background(30, 144, 255);
+}
+.teal{
+	@include highlighter-background(0, 128, 128);
+}
+.darkorchid{
+	@include highlighter-background(153,  50, 204);
 }
