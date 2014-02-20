@@ -4,7 +4,7 @@ class Person < ActiveRecord::Base
   belongs_to :claim
 
   validates :role,
-    :inclusion => { :in => ["Claimant", "Witness", "Attorney", "Advocate", "Other", "", nil],
+    :inclusion => { :in => ["claimant", "witness", "attorney", "advocate", "other", "", nil],
     :message => "%{value} is not one of the stated options.  Did you mean 'other'?"}
 
 end

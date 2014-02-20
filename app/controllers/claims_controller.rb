@@ -11,9 +11,7 @@ class ClaimsController < ApplicationController
 	def edit
 		@claim = Claim.find(params[:id]) 
     @claim = Claim.create if @claim.nil?
-    if Person.find_by_claim_id(@claim.id).name
-      @claimant_name = Person.find_by_claim_id(@claim.id).name
-    end
+    @claimant_name = @claim.claimant_attr("name")
   end
 
   def update

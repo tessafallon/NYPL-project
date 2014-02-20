@@ -10,7 +10,12 @@ class Claim < ActiveRecord::Base
     :inclusion => { :in => ["Home", "Workplace", "Other", "", nil],
     :message => "%{value} is not one of the stated options of home, workplace, or other."}
 
-    def claimant_name
-    end
+  def claimants
+    Person.where(:claim_id=>self.id, :role=>"claimant")
+  end
+
+  def claimant_attr(attribute)
+    self.claimants.first.send(attribute.to_sym) if self.claimants
+  end
 
 end
