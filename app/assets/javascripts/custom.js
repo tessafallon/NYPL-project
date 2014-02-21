@@ -37,10 +37,10 @@ $(document).ready( function() {
     console.log(boxColor);
     var $overlay = $("<div class='overlay'></div>").appendTo($imgDiv);
     $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
-            .css("top", startCoordinate.y)
-            .css("left", startCoordinate.x)
-            .css("height", endCoordinate.y - startCoordinate.y)
-            .css("width", endCoordinate.x - startCoordinate.x)
+            .css("top", Math.min(startCoordinate.y, endCoordinate.y))
+            .css("left", Math.min(startCoordinate.x, endCoordinate.x))
+            .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
+            .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
             .addClass(boxColor);
   });
 });
