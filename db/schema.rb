@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218154151) do
+ActiveRecord::Schema.define(version: 20140220184428) do
+
+  create_table "claim_examiners", force: true do |t|
+    t.integer "claim_id"
+    t.integer "examiner_id"
+  end
 
   create_table "claims", force: true do |t|
     t.date    "claim_date"
@@ -23,6 +28,10 @@ ActiveRecord::Schema.define(version: 20140218154151) do
     t.string  "incident_address_type"
     t.float   "total_claimed"
     t.float   "total_awarded"
+  end
+
+  create_table "examiners", force: true do |t|
+    t.string "name"
   end
 
   create_table "people", force: true do |t|
