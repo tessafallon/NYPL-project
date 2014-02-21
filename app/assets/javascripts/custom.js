@@ -31,7 +31,7 @@ $(document).ready( function() {
     startCoordinate = getMousePos(e);
     $imgDiv.on("mousemove", function(e) {
       endCoordinate = getMousePos(e);
-      overlays.last.remove();
+      
       var $overlay = $("<div class='overlay'></div>").appendTo($imgDiv);
       $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
               .css("top", Math.min(startCoordinate.y, endCoordinate.y))
@@ -39,8 +39,9 @@ $(document).ready( function() {
               .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
               .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
               .addClass(boxColor);
-      overlays.push($overlay);
-      $timeout(function(){}, 1000);
+      if (overlays.length > 0) {overlays.pop().remove()}
+
+      overlays.push($overlay);  
     }).on("mouseup", function(){$(this).unbind("mousemove")}); 
   });
 });
