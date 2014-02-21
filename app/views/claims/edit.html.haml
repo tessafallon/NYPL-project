@@ -42,7 +42,7 @@
         %label{:for=>"total_awarded"} Total Awarded
       %h2 About the examiner
       %input{:id=>"examiner_id", :type=>"hidden", :name=>"examiner[id]", :value=>@claim.first_examiner_attr("id")}
-      %input{:id=>"examiner_name", :type=>"text", :name=>"examiner[name]", :value=>@claim.examiners.first.name}
+      %input{:id=>"examiner_name", :type=>"text", :name=>"examiner[name]", :value=>@claim.first_examiner_attr("name")}
       %span.highlighter.coral
         %label{:for=>"examiner_name"} Examiner Name
       %h2 About the claimant
