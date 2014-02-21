@@ -4,6 +4,7 @@ $(document).ready( function() {
   var imgDivOffset = $imgDiv.offset();
   var $img = $imgDiv.find("img");
   var $highlighter = $(".highlighter");
+  var $colorWindows;
 
   var startCoordinate = {};
   var endCoordinate = {};
@@ -42,6 +43,20 @@ $(document).ready( function() {
       if (overlays.length > 0) {overlays.pop().remove()}
 
       overlays.push($overlay);  
-    }).on("mouseup", function(){$(this).unbind("mousemove")}); 
+    }).
+    on("mouseup", function(){
+      $(this).unbind("mousemove");
+        $colorWindows = $(".overlay");
+        $colorWindows.on("click",function(){
+        console.log("clicked!");
+      });
+    }); 
   });
+  
+  // $imgDiv.on("mouseup", function(){
+   
+  // });
+    
+  
+
 });
