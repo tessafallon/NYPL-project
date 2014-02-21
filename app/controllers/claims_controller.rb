@@ -30,7 +30,7 @@ class ClaimsController < ApplicationController
   end
 
   def examiner_params
-    params.require(:examiner).permit(:name, :claims)
+    params.require(:examiner).permit(:id, :name, :claims)
   end
 
 end

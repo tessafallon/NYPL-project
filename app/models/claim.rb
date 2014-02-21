@@ -19,7 +19,7 @@
   end
 
   def update_claimant(person_params)
-    person = self.claimants.first
+    person = self.claimant
     if person
       person.update_attributes(person_params)
     else
@@ -28,7 +28,7 @@
   end
 
   def update_examiner(examiner_params)
-    examiner = Examiner.find_by_name(examiner_params[:name])
+    examiner = Examiner.find(examiner_params[:id].to_i)
     if examiner
       examiner.update_attributes(examiner_params)
       examiner.claims << self unless self.examiners.include? examiner
