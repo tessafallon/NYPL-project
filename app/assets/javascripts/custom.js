@@ -29,18 +29,15 @@ $(document).ready( function() {
   $imgDiv.on("mousedown", function(e) {
     startCoordinate = getMousePos(e);
     console.log(startCoordinate);
-  });
-
-  $imgDiv.on("mouseup", function(e) {
-    endCoordinate = getMousePos(e);
-    console.log(endCoordinate);
-    console.log(boxColor);
-    var $overlay = $("<div class='overlay'></div>").appendTo($imgDiv);
-    $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
-            .css("top", Math.min(startCoordinate.y, endCoordinate.y))
-            .css("left", Math.min(startCoordinate.x, endCoordinate.x))
-            .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
-            .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
-            .addClass(boxColor);
+    $imgDiv.on("mousemove", function(e) {
+      endCoordinate = getMousePos(e);
+      var $overlay = $("<div class='overlay'></div>").appendTo($imgDiv);
+      $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
+              .css("top", Math.min(startCoordinate.y, endCoordinate.y))
+              .css("left", Math.min(startCoordinate.x, endCoordinate.x))
+              .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
+              .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
+              .addClass(boxColor);
+    });
   });
 });
