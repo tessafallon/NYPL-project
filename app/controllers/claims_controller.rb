@@ -22,6 +22,9 @@ class ClaimsController < ApplicationController
     else
       person = Person.create(person_params)
     end
+    examiner = Examiner.new(examiner_params)
+    examiner.claims << claim
+    examiner.save
     render 'diagnostics'
   end
 
@@ -34,7 +37,7 @@ class ClaimsController < ApplicationController
   end
 
   def examiner_params
-    params.require(:examiner).permit(:name)
+    params.require(:examiner).permit(:name, :claims)
   end
 
 end
