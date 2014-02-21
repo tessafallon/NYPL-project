@@ -16,20 +16,8 @@ class ClaimsController < ApplicationController
   def update
     claim = Claim.find(params[:id]) 
     claim.update_attributes(params[:claim])
-    person = claim.claimants.first
-    if person
-      person.update_attributes(person_params)
-    else
-      person = Person.create(person_params)
-    end
-    examiner = Examiner.find_by_name(examiner_params[:name])
-    if examiner
-      examiner.claims << claim unless claim.examiners.include? examiner
-    else
-      examiner = Examiner.new(examiner_params)
-      examiner.claims << claim
-    end
-    examiner.save
+    claim.update_claimant(person_params)
+    claim.update_examiner(examiner_params)
     render 'diagnostics'
   end
 
