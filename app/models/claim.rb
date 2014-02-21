@@ -10,12 +10,12 @@
     :inclusion => { :in => ["Home", "Workplace", "Other", "", nil],
     :message => "%{value} is not one of the stated options of home, workplace, or other."}
 
-  def claimants
-    Person.where(:claim_id=>self.id, :role=>"claimant")
+  def claimant
+    Person.where(:claim_id=>self.id, :role=>"claimant").first
   end
 
   def claimant_attr(attribute)
-    self.claimants.first.send(attribute.to_sym) if self.claimants.length > 0
+    self.claimant.send(attribute.to_sym) if self.claimant
   end
 
   def update_claimant(person_params)
