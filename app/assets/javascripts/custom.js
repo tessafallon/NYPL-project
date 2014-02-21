@@ -27,10 +27,11 @@ $(document).ready( function() {
   });
 
   $imgDiv.on("mousedown", function(e) {
+    var overlays = [];
     startCoordinate = getMousePos(e);
-    console.log(startCoordinate);
     $imgDiv.on("mousemove", function(e) {
       endCoordinate = getMousePos(e);
+      overlays.last.remove();
       var $overlay = $("<div class='overlay'></div>").appendTo($imgDiv);
       $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
               .css("top", Math.min(startCoordinate.y, endCoordinate.y))
@@ -38,6 +39,8 @@ $(document).ready( function() {
               .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
               .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
               .addClass(boxColor);
-    });
+      overlays.push($overlay);
+      $timeout(function(){}, 1000);
+    }).on("mouseup", function(){$(this).unbind("mousemove")}); 
   });
 });
