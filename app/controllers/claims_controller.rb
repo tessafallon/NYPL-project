@@ -22,14 +22,19 @@ class ClaimsController < ApplicationController
     else
       person = Person.create(person_params)
     end
-    examiner = Examiner.new(examiner_params)
-    examiner.claims << claim
+    examiner = Examiner.find_by_name(examiner_params[:name])
+    if examiner
+      examiner.claims << claim unless claim.examiners.include? examiner
+    else
+      examiner = Examiner.new(examiner_params)
+      examiner.claims << claim
+    end
     examiner.save
     render 'diagnostics'
   end
 
   def claim_params
-    params.require(:claim).permit(:claim_date, :incident_date, :resolution_date, :claim_number, :record_number, :incident_address, :incident_address_type, :total_claimed, :total_awarded)
+    params.require(:claim).permit(:claim_date, :incident_date, :resolution_date, :claim_number, :record_number, :incident_address, :incident_address_type, :total_claimed, :total_awarded, :examiners)
   end
 
   def person_params
