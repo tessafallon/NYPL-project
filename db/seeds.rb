@@ -7,4 +7,3 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 claims = Claim.create
-examiner = Examiner.create
