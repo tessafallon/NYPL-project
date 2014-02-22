@@ -28,8 +28,8 @@
   end
 
   def update_examiner(examiner_params)
-    examiner = Examiner.find(examiner_params[:id].to_i)
-    if examiner
+    unless examiner_params[:id].to_i == 0
+      examiner = Examiner.find(examiner_params[:id])
       examiner.update_attributes(examiner_params)
       examiner.claims << self unless self.examiners.include? examiner
     else
