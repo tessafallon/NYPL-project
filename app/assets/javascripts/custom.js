@@ -27,7 +27,7 @@ $(document).ready( function() {
     description = $(this).text().trim();
   });
 
-  $imgDiv.on("mousedown", function(e) {
+  $imgDiv.on("mousedown input:not('.overlay')", function(e) {
     var overlays = [];
     startCoordinate = getMousePos(e);
     $imgDiv.on("mousemove", function(e) {
@@ -40,12 +40,31 @@ $(document).ready( function() {
               .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
               .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
               .addClass(boxColor)
-              .on('click', function(){
-                console.log('WTF');
-                $(this).one("mouseout", function(){
-                  console.log("exited");
-                });
+              .on('mousedown', function(e) {
+                switch(e.which) {
+                  case 1:
+                    console.log('WTF');
+                    $(this).one("mouseout", function(){
+                      console.log("exited");
+                    });
+                    break;
+                  case 2:
+                    alert("middle");
+                    break;
+                  case 3:
+                    alert("right");
+                    e.stopImmediatePropagation();
+                    break;
+                  default:
+                    alert("what is this?");
+                    break;
+                  }
               });
+              // .on("contextmenu", function(e) {
+              //   alert("context!");
+              //   e.preventDefault();
+              //   return false;
+              // });
       if (overlays.length > 0) {overlays.pop().remove()}
       overlays.push($overlay);  
     })

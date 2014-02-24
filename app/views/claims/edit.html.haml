@@ -1,6 +1,6 @@
 .transcript
   
-  .form-div  
+  .form-div
     %h1
       Claim Information
     %form{:action=>"/claims/#{params[:id]}", :method=>"post"}
@@ -73,5 +73,6 @@
       %input{:name=>"authenticity_token", :type=>"hidden", :value=>form_authenticity_token} 
       
       %button{:type=>"submit", :value=>"submit"} Transcribe!
-.transcribe-image-holder
+
+.transcribe-image-holder{:oncontextmenu=>"return false;"}
   %img{:src=>image_path("draft_riots_pg75.jpeg")}
