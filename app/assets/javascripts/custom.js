@@ -4,7 +4,6 @@ $(document).ready( function() {
   var imgDivOffset = $imgDiv.offset();
   var $img = $imgDiv.find("img");
   var $highlighter = $(".highlighter");
-  var $colorWindows;
 
   var startCoordinate = {};
   var endCoordinate = {};
@@ -39,24 +38,29 @@ $(document).ready( function() {
               .css("left", Math.min(startCoordinate.x, endCoordinate.x))
               .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
               .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
-              .addClass(boxColor);
+              .addClass(boxColor).on('click', function(){
+                console.log('WTF');
+              });
       if (overlays.length > 0) {overlays.pop().remove()}
 
       overlays.push($overlay);  
     }).
     on("mouseup", function(){
       $(this).unbind("mousemove");
-        $colorWindows = $(".overlay");
-        $colorWindows.on("click",function(){
-        console.log("clicked!");
-      });
+        // $colorWindows = $(".overlay");
+        // $colorWindows.on("click",function(){
+        // console.log("clicked!");
+      // });
     }); 
   });
   
-  // $imgDiv.on("mouseup", function(){
-   
-  // });
-    
-  
-
+  // $imgDiv.on("click", "div.overlay", function(){
+  //   console.log(this);
+  //   console.log("clicked!");
+  //   }).
+  //   on("mouseout", function(){
+  //     console.log(this);
+  //     $(this).unbind("click");
+  //     console.log("exited");
+  //   });
 });
