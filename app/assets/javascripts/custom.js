@@ -38,19 +38,18 @@ $(document).ready( function() {
               .css("left", Math.min(startCoordinate.x, endCoordinate.x))
               .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
               .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
-              .addClass(boxColor).on('click', function(){
+              .addClass(boxColor)
+              .on('click', function(){
                 console.log('WTF');
+                $(this).one("mouseout", function(){
+                  console.log("exited");
+                });
               });
       if (overlays.length > 0) {overlays.pop().remove()}
-
       overlays.push($overlay);  
-    }).
-    on("mouseup", function(){
+    })
+    .on("mouseup", function(){
       $(this).unbind("mousemove");
-        // $colorWindows = $(".overlay");
-        // $colorWindows.on("click",function(){
-        // console.log("clicked!");
-      // });
     }); 
   });
   
@@ -58,9 +57,5 @@ $(document).ready( function() {
   //   console.log(this);
   //   console.log("clicked!");
   //   }).
-  //   on("mouseout", function(){
-  //     console.log(this);
-  //     $(this).unbind("click");
-  //     console.log("exited");
-  //   });
+
 });
