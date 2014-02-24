@@ -8,6 +8,7 @@ $(document).ready( function() {
   var startCoordinate = {};
   var endCoordinate = {};
   var boxColor = "";
+  var description = "";
 
   $img.on("dragstart", function() {
     return false;
@@ -22,8 +23,8 @@ $(document).ready( function() {
   }
 
   $highlighter.on("click", function() {
-    boxColor = this.className.split(" ")[1];
-    console.log(boxColor);
+    boxColor = $(this).attr("class").split(" ")[1];
+    description = $(this).text().trim();
   });
 
   $imgDiv.on("mousedown", function(e) {
@@ -32,7 +33,7 @@ $(document).ready( function() {
     $imgDiv.on("mousemove", function(e) {
       endCoordinate = getMousePos(e);
       
-      var $overlay = $("<div class='overlay'></div>").appendTo($imgDiv);
+      var $overlay = $("<div class='overlay' title='" + description + "'></div>").appendTo($imgDiv);
       $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
               .css("top", Math.min(startCoordinate.y, endCoordinate.y))
               .css("left", Math.min(startCoordinate.x, endCoordinate.x))
