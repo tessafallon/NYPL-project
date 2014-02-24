@@ -49,10 +49,9 @@ $(document).ready( function() {
                     });
                     break;
                   case 2:
-                    alert("middle");
                     break;
                   case 3:
-                    alert("right");
+                    $(this).remove();
                     e.stopImmediatePropagation();
                     break;
                   default:
