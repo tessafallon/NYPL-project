@@ -36,6 +36,7 @@ $(document).ready( function() {
       endCoordinate = getMousePos(e);
       
       var $overlay = $("<div class='overlay' title='" + description + "'><div class='x-out hidden'><span class='x-in'>x</span></div></div>").appendTo($imgDiv);
+      $(".flag").not($overlay).removeClass("flag").find(".x-out").addClass("hidden");
       $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
               .css("top", Math.min(startCoordinate.y, endCoordinate.y))
               .css("left", Math.min(startCoordinate.x, endCoordinate.x))
@@ -44,6 +45,9 @@ $(document).ready( function() {
               .addClass(boxColor)
               .addClass("flag")
               .on('mousedown', function(e) {
+                $(".flag").find(".x-out").addClass("hidden");
+                $(".flag").removeClass("flag");
+                $(this).addClass("flag").find(".x-out").removeClass("hidden");
                 $(this).one("mouseout", function(){
                   console.log("exited");
                 });
