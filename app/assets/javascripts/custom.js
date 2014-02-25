@@ -30,6 +30,8 @@ $(document).ready( function() {
   $imgDiv.on("mousedown input:not('.overlay')", function(e) {
     var overlays = [];
     startCoordinate = getMousePos(e);
+    // $(".flag").find(".x-out").addClass("hidden");
+    // $(".flag").removeClass("flag");
     $imgDiv.on("mousemove", function(e) {
       endCoordinate = getMousePos(e);
       
@@ -40,13 +42,9 @@ $(document).ready( function() {
               .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
               .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
               .addClass(boxColor)
+              .addClass("flag")
               .on('mousedown', function(e) {
-                $(".flag").find(".x-out").addClass("hidden");
-                $(".flag").removeClass("flag");
-                var $this = $(this);
-                $this.addClass("flag");
-                $this.find('.x-out').removeClass('hidden');
-                $this.one("mouseout", function(){
+                $(this).one("mouseout", function(){
                   console.log("exited");
                 });
               });
@@ -56,6 +54,10 @@ $(document).ready( function() {
     })
     .on("mouseup", function(){
       $(this).unbind("mousemove");
+      $(".flag").find(".x-out").removeClass("hidden");
+      $(".x-out").on("click", function(){
+        $(this).parent().remove();
+      });
     }); 
 
   });
