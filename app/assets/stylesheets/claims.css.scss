@@ -53,6 +53,34 @@ img{
 	position: absolute;
 }
 
+.hidden{
+	display: none;
+}
+
+.x-out{
+
+	background-color: white;
+	height: 15px;
+	width: 15px;
+	border: 1px solid black;
+	border-radius: 15px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+.x-in{
+	margin: 0 auto;
+	text-align: center;
+	font-size: 15px;
+	font-family: courier;
+	position: absolute;
+	top: -3px;
+	right: 3px;
+}
+
+
 @mixin highlighter-background($r, $g, $b){
 	background-color: rgba($r,$g,$b,0.2);
 }

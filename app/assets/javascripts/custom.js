@@ -30,51 +30,47 @@ $(document).ready( function() {
   $imgDiv.on("mousedown input:not('.overlay')", function(e) {
     var overlays = [];
     startCoordinate = getMousePos(e);
+    // $(".flag").find(".x-out").addClass("hidden");
+    // $(".flag").removeClass("flag");
     $imgDiv.on("mousemove", function(e) {
       endCoordinate = getMousePos(e);
       
-      var $overlay = $("<div class='overlay' title='" + description + "'></div>").appendTo($imgDiv);
+      var $overlay = $("<div class='overlay' title='" + description + "'><div class='x-out hidden'><span class='x-in'>x</span></div></div>").appendTo($imgDiv);
+      $(".flag").not($overlay).removeClass("flag").find(".x-out").addClass("hidden");
       $overlay.attr("id","box"+startCoordinate.y+startCoordinate.x)
               .css("top", Math.min(startCoordinate.y, endCoordinate.y))
               .css("left", Math.min(startCoordinate.x, endCoordinate.x))
               .css("height", Math.abs(endCoordinate.y - startCoordinate.y))
               .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
               .addClass(boxColor)
+              .addClass("flag")
               .on('mousedown', function(e) {
-                switch(e.which) {
-                  case 1:
-                    console.log('WTF');
-                    $(this).one("mouseout", function(){
-                      console.log("exited");
-                    });
-                    break;
-                  case 2:
-                    break;
-                  case 3:
-                    $(this).remove();
-                    e.stopImmediatePropagation();
-                    break;
-                  default:
-                    alert("what is this?");
-                    break;
-                  }
+                $(".flag").find(".x-out").addClass("hidden");
+                $(".flag").removeClass("flag");
+                $(this).addClass("flag").find(".x-out").removeClass("hidden");
+                $(this).one("mouseout", function(){
+                  console.log("exited");
+                });
               });
-              // .on("contextmenu", function(e) {
-              //   alert("context!");
-              //   e.preventDefault();
-              //   return false;
-              // });
+
       if (overlays.length > 0) {overlays.pop().remove()}
       overlays.push($overlay);  
     })
     .on("mouseup", function(){
       $(this).unbind("mousemove");
+      $(".flag").find(".x-out").removeClass("hidden");
+      $(".x-out").on("click", function(){
+        $(this).parent().remove();
+      });
     }); 
+
   });
   
-  // $imgDiv.on("click", "div.overlay", function(){
-  //   console.log(this);
-  //   console.log("clicked!");
-  //   }).
+  $('body').on("click", function(e){
+    if(e.target.className.split(' ')[0] != "overlay") {
+      $('.flag').find('.x-out').addClass('hidden'); 
+      $('.flag').removeClass('flag');
+    }
+  });
 
 });
