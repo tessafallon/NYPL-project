@@ -6,7 +6,7 @@ class CreateDamage < ActiveRecord::Migration
       t.string :unit
       t.float :total_cost
       t.boolean :overcharge?
-      t.belongs_to :claim
+      t.integer :claim_id
     end
   end
 end
