@@ -37,7 +37,7 @@ var chart = d3.select(".hat_graph").
             attr("width", columnWidth * damage_types.length)
             .attr("height", columnHeight);
 
-d3.json(jsonDamages, type, function(error, data){
+d3.json("localhost:3000/assets/damages.json", type, function(error, data){
 
   alert(data);
 
