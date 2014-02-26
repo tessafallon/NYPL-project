@@ -27,10 +27,39 @@ var jsonDamages = [{
     }
     ]}];
 
-var damage_types = Object.keys(jsonDamages[0]).length;
+var damage_types = Object.keys(jsonDamages[0]);
 
-var bar_width = 10;
+var columnWidth = 20
+    columnHeight = 100;
 
 var chart = d3.select(".hat_graph").
             append("svg").
-            attr("width", bar_width * damage_types);
+            attr("width", columnWidth * damage_types.length)
+            .attr("height", columnHeight);
+
+d3.json(jsonDamages, type, function(error, data){
+
+  alert(data);
+
+  // var bubble = chart.selectAll("g")
+  //               .data(data)
+  //             .enter().append("g")
+  //               .attr("transform", function(d, i){
+  //                 return "translate("+i*columnWidth+",0)";
+  //               });
+
+
+
+});
+
+function type(d){
+  return d;
+}
+
+
+
+
+
+
+
+

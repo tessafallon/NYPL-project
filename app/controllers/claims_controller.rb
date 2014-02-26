@@ -5,7 +5,7 @@ class ClaimsController < ApplicationController
 
 	def show
 		# @claim = Claim.find(params[:id])
-    render 'diagnostics'
+    # render 'diagnostics'
 	end
 
 	def edit
