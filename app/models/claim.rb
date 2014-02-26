@@ -4,6 +4,7 @@
   has_many :people
   has_many :claim_examiners
   has_many :examiners, :through => :claim_examiners
+  has_many :damages
 
 
   validates :incident_address_type,
