@@ -1,10 +1,11 @@
 class ClaimsController < ApplicationController
 	def index
 		@claims = Claim.all
+    # @claims.as_json{:include => :claimant}
     respond_to do |format|
       format.html
       format.json do
-        render(:json => @claims)
+        render(:json => @claims.to_json(:include => [:people, :damages, :examiners]))
       end
     end
 	end
