@@ -11,7 +11,13 @@ class ClaimsController < ApplicationController
 	end
 
 	def show
-		# @claim = Claim.find(params[:id])
+		@claim = Claim.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json do
+        render(:json => @claim.to_json(:include => [:people, :damages, :examiners]))
+      end
+    end
     # render 'diagnostics'
 	end
 
