@@ -1,6 +1,12 @@
 class ClaimsController < ApplicationController
 	def index
 		@claims = Claim.all
+    respond_to do |format|
+      format.html
+      format.json do
+        render(:json => @claims)
+      end
+    end
 	end
 
 	def show
