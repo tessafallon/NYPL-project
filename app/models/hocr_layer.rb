@@ -7,9 +7,10 @@ class HocrLayer < ActiveRecord::Base
   has_many :claims, :through => :claim_hocr_layers
 
   def identify_claim
-    debugger
-    file = File.open("./public/hocr_files/#{self.filename}.html", "r")
-    puts "hi"
+    file = File.open("./public/ocr_files/#{self.filename}_ocr.txt", "r")
+    data = file.read
+    record_info = /.*Record\sNo.\s(\d+).*/.match(data)
+    record_number = record_info[1].to_i
   end
 
 end
