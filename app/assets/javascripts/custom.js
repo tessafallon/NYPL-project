@@ -39,7 +39,7 @@ $(document).ready( function() {
     // $(".flag").removeClass("flag");
     $imgDiv.on("mousemove", function(e) {
       endCoordinate = getMousePos(e);
-      $("#claim_date").focus();
+      $("#"+boxColor).focus();
       
       var $overlay = $("<div class='overlay' title='" + description + "'><div class='x-out hidden'><span class='x-in'>x</span></div></div>").appendTo($imgDiv);
       $(".flag").not($overlay).removeClass("flag").find(".x-out").addClass("hidden");
@@ -50,14 +50,11 @@ $(document).ready( function() {
               .css("width", Math.abs(endCoordinate.x - startCoordinate.x))
               .addClass(boxColor)
               .addClass("flag")
-              .on('mousedown', function(e) {
+              .on('click', function(e) {
                 $("#claim_date").focus();
                 $(".flag").find(".x-out").addClass("hidden");
                 $(".flag").removeClass("flag");
                 $(this).addClass("flag").find(".x-out").removeClass("hidden");
-                $(this).one("mouseout", function(){
-                  console.log("exited");
-                });
               });
 
       if (overlays.length > 0) {overlays.pop().remove()}
