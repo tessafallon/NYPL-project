@@ -5,7 +5,8 @@
   has_many :claim_examiners
   has_many :examiners, :through => :claim_examiners
   has_many :damages
-
+  has_many :claim_hocr_layers
+  has_many :hocr_layers, :through => :claim_hocr_layers
 
   validates :incident_address_type,
     :inclusion => { :in => ["Home", "Workplace", "Other", "", nil],
