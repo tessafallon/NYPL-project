@@ -89,56 +89,59 @@ img{
 	@include highlighter-background(255, 105, 180);
 }
 
-.green{
+.incident_date{
 	@include highlighter-background(34, 139,  34);
 }
 
-.gold{
+.resolution_date{
 	@include highlighter-background(128, 128,   0);
 }
 
-.fuchsia{
+.claim_number{
 	@include highlighter-background(255,   0, 255);
 }
 
-.orange{
+.record_number{
 	@include highlighter-background(255, 165,   0);
 }
 
-.lightskyblue{
+.incident_address{
 	@include highlighter-background(135, 206, 250);
 }
 
-.midnightblue{
+.incident_address_type{
 	@include highlighter-background(25,  25, 112);
 }
 
-.yellowgreen{
+.total_claimed{
 	@include highlighter-background(154, 205,  50);
 }
 
-.crimson{
+.total_awarded{
 	@include highlighter-background(220,  20,  60);
 }
 
-.coral{
+.examiner_name{
 	@include highlighter-background(255, 127,  80);
 }
 
-.yellow{
+.claimant_name{
 	@include highlighter-background(255, 255,   0);
 }
 
-.cyan{
+.previous_address{
 	@include highlighter-background(0, 255, 255);
 }
 
-.dodgerblue{
-	@include highlighter-background(30, 144, 255);
-}
-.teal{
-	@include highlighter-background(0, 128, 128);
-}
-.darkorchid{
+.current_address{
 	@include highlighter-background(153,  50, 204);
 }
+
+.gender{
+	@include highlighter-background(0, 128, 128);
+}
+
+.race{
+	@include highlighter-background(30, 144, 255);
+}
+

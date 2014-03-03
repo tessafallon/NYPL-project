@@ -51,7 +51,8 @@ $(document).ready( function() {
               .addClass(boxColor)
               .addClass("flag")
               .on('click', function(e) {
-                $("#claim_date").focus();
+                var currentClass = $(this).attr("class").split(" ")[1];
+                $("#"+currentClass).focus();
                 $(".flag").find(".x-out").addClass("hidden");
                 $(".flag").removeClass("flag");
                 $(this).addClass("flag").find(".x-out").removeClass("hidden");
