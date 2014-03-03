@@ -18,13 +18,14 @@ class HocrLayer < ActiveRecord::Base
         current_claim = Claim.create(:record_number => current_record)
       end
       if current_claim
-        # save claim info
+        hocr_layer.create_claim(current_claim)
       end
     end
   end
 
-  def create_claim
-
+  def create_claim(claim)
+    # create association between hocr_layer and claim
+    # populate claim data via regex on hocr_layer
   end
 
 end
