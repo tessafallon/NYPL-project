@@ -27,6 +27,11 @@ $(document).ready( function() {
     description = $(this).text().trim();
   });
 
+  $("input").on("click", function() {
+    boxColor = $(this).next("span").attr("class").split(" ")[1];
+    description = $(this).next("span").text().trim();
+  });
+
   $imgDiv.on("mousedown input:not('.overlay')", function(e) {
     var overlays = [];
     startCoordinate = getMousePos(e);
@@ -34,6 +39,7 @@ $(document).ready( function() {
     // $(".flag").removeClass("flag");
     $imgDiv.on("mousemove", function(e) {
       endCoordinate = getMousePos(e);
+      $("#claim_date").focus();
       
       var $overlay = $("<div class='overlay' title='" + description + "'><div class='x-out hidden'><span class='x-in'>x</span></div></div>").appendTo($imgDiv);
       $(".flag").not($overlay).removeClass("flag").find(".x-out").addClass("hidden");
@@ -45,6 +51,7 @@ $(document).ready( function() {
               .addClass(boxColor)
               .addClass("flag")
               .on('mousedown', function(e) {
+                $("#claim_date").focus();
                 $(".flag").find(".x-out").addClass("hidden");
                 $(".flag").removeClass("flag");
                 $(this).addClass("flag").find(".x-out").removeClass("hidden");
