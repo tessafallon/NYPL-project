@@ -35,8 +35,6 @@ $(document).ready( function() {
   $imgDiv.on("mousedown input:not('.overlay')", function(e) {
     var overlays = [];
     startCoordinate = getMousePos(e);
-    // $(".flag").find(".x-out").addClass("hidden");
-    // $(".flag").removeClass("flag");
     $imgDiv.on("mousemove", function(e) {
       endCoordinate = getMousePos(e);
       $("#"+boxColor).focus();
@@ -72,7 +70,13 @@ $(document).ready( function() {
   });
   
   $('body').on("click", function(e){
-    if(e.target.className.split(' ')[0] != "overlay") {
+    if(e.target.nodeName === "INPUT"){
+      $(".flag").find(".x-out").addClass("hidden");
+      $(".flag").removeClass("flag");
+      var flagClass = e.target.id;
+      $(".overlay."+flagClass).addClass("flag").find(".x-out").removeClass("hidden");
+    }
+    else if(e.target.className.split(' ')[0] != "overlay") {
       $('.flag').find('.x-out').addClass('hidden'); 
       $('.flag').removeClass('flag');
     }

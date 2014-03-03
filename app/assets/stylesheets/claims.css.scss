@@ -83,6 +83,8 @@ img{
 
 @mixin highlighter-background($r, $g, $b){
 	background-color: rgba($r,$g,$b,0.2);
+
+	&.flag{ border: 2px solid rgba($r, $g, $b, 0.3);}
 }
 
 .claim_date{
@@ -144,4 +146,3 @@ img{
 .race{
 	@include highlighter-background(30, 144, 255);
 }
-
