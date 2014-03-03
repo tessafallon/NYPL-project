@@ -1,5 +1,3 @@
-require 'debugger'
-
 class HocrLayer < ActiveRecord::Base
   belongs_to :image
   has_many :hocr_lines
@@ -8,6 +6,8 @@ class HocrLayer < ActiveRecord::Base
 
  # before this method is called, need to run through hocr_files folder
  # and create hocr_layer objects with those filenames
+
+
   def self.identify_claims
     self.all.each do |hocr_layer|
       current_claim = nil
