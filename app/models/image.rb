@@ -7,11 +7,13 @@ class Image < ActiveRecord::Base
   end
 
   def self.run_ocrs(path)
-    img_filenames = Dir.new(path).entries.select { |f| !File.directory? f }
-    img_filenames.each do |file|
-      exec "tesseract #{file}.tif ../ocr_files/#{file}_ocr -l eng"
-      exec "tesseract #{file}.tif ../hocr_files/#{file}_hocr -l eng -hocr"
+    img_filenames = Dir.new(path).entries.select do |f|
+      !File.directory?(f) && !f.start_with?(".")
     end
-   
+    img_filenames.each do |file|
+      system "tesseract #{File.join(path, file)} #{Rails.public_path}/ocr_files/#{file}_ocr -l eng"
+      system "tesseract #{File.join(path, file)} #{Rails.public_path}/hocr_files/#{file}_hocr -l eng -hocr"
+    end
   end
+
 end
