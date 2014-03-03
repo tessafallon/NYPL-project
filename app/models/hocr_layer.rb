@@ -9,8 +9,11 @@ class HocrLayer < ActiveRecord::Base
   def identify_claim
     file = File.open("./public/ocr_files/#{self.filename}_ocr.txt", "r")
     data = file.read
-    record_info = /.*Record\sNo.\s(\d+).*/.match(data)
-    record_number = record_info[1].to_i
+    if /.*\(Record\sNo.\s(\d+),\sof\s1863\.\).*/.match(data)
+      record_info = /.*\(Record\sNo.\s(\d+),\sof\s1863\.\).*/.match(data)
+      debugger
+      record_number = record_info[1].to_i
+    end
   end
 
 end
