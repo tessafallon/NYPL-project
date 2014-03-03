@@ -6,6 +6,8 @@ class HocrLayer < ActiveRecord::Base
   has_many :claim_hocr_layers
   has_many :claims, :through => :claim_hocr_layers
 
+ # before this method is called, need to run through hocr_files folder
+ # and create hocr_layer objects with those filenames
   def self.identify_claims
     self.all.each do |hocr_layer|
       current_claim = nil
