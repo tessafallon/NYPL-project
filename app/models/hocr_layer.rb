@@ -8,13 +8,17 @@ class HocrLayer < ActiveRecord::Base
 
   def self.identify_claims
     self.all.each do |hocr_layer|
+      current_claim = nil
       file = File.open("./public/ocr_files/#{hocr_layer.filename}_ocr.txt", "r")
       data = file.read
-      if /.*\(Record\sNo.\s(\d+),\sof\s1863\.\).*/.match(data)
+      record_info = /.*\(Record\sNo.\s(\d+),\sof\s1863\.\).*/.match(data)
+      if record_info
         # this is the start of a claim
-        record_info = /.*\(Record\sNo.\s(\d+),\sof\s1863\.\).*/.match(data)
         current_record = record_info[1].to_i
         current_claim = Claim.create(:record_number => current_record)
+      end
+      if current_claim
+        # save claim info
       end
     end
   end
