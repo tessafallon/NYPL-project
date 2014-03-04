@@ -1,3 +1,4 @@
+require 'debugger'
 class HocrLayer < ActiveRecord::Base
   belongs_to :image
   has_many :hocr_lines
@@ -42,6 +43,15 @@ class HocrLayer < ActiveRecord::Base
     end
     # populate claim data via regex on hocr_layer
     claim.save
+  end
+
+  def replace_bbox
+    file_path = "./public/hocr_files/#{self.filename}_hocr.html"
+    file = File.open(file_path, "r")
+    data = file.read
+    regex = /(id='word_\d+')\s(title="\w{4}\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)")/
+    data = data.gsub(regex,"\\1 style='left: \\3\; top: \\4\;'")
+    File.open(file_path, 'w') {|f| f.write(data) }
   end
 
 end
