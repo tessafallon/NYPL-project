@@ -41,6 +41,21 @@ input{
 
 img{
   width: 100%;
+  position: relative;
+}
+
+.background_image{
+	
+}
+
+.ocr_page{
+	position: relative;
+}
+
+.ocrx_word{
+	position: absolute;
+	border: 2px solid black;
+	display: block;
 }
 
 .transcribe-image-holder{
