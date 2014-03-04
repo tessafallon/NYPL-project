@@ -20,9 +20,18 @@ class HocrLayer < ActiveRecord::Base
         current_claim = Claim.create(:record_number => current_record)
       end
       if current_claim
+        hocr_layer.link_claim(current_claim)
         hocr_layer.create_claim(current_claim, data)
       end
     end
+  end
+
+  def link_claim(claim)
+    # create association between hocr_layer and claim if it doesn't already exist
+    if !self.claims.include? claim
+      self.claims << claim
+    end
+    self.save
   end
 
   def create_claim(claim, data)
@@ -31,8 +40,8 @@ class HocrLayer < ActiveRecord::Base
     if claimant
       claim.people << Person.create(:name => claimant[1].name_caps, :role => "claimant")
     end
-    # create association between hocr_layer and claim
     # populate claim data via regex on hocr_layer
+    claim.save
   end
 
 end
