@@ -8,6 +8,15 @@ class HocrLayer < ActiveRecord::Base
  # before this method is called, need to run through hocr_files folder
  # and create hocr_layer objects with those filenames
 
+ def self.create_hocr_objects
+  directory = Dir.new("./public/hocr_files").entries.select do |f|
+    !File.directory?(f) && !f.start_with?(".")
+  end
+  directory.each do |file|
+    HocrLayer.create(:filename => file[0..-11])
+  end
+ end
+
 
   def self.identify_claims
     self.all.each do |hocr_layer|
@@ -27,8 +36,9 @@ class HocrLayer < ActiveRecord::Base
     end
   end
 
+
+  # create association between hocr_layer and claim if it doesn't already exist
   def link_claim(claim)
-    # create association between hocr_layer and claim if it doesn't already exist
     if !self.claims.include? claim
       self.claims << claim
     end
@@ -42,6 +52,7 @@ class HocrLayer < ActiveRecord::Base
       claim.people << Person.create(:name => claimant[1].name_caps, :role => "claimant")
     end
     # populate claim data via regex on hocr_layer
+
     claim.save
   end
 
