@@ -13,7 +13,7 @@ class HocrLayer < ActiveRecord::Base
     end
     directory.each do |file|
       puts "opening file: #{file}"
-      new_layer = HocrLayer.create(:filename => file[0..-11])
+      new_layer = HocrLayer.create(:filename => file[2..-11])
       new_layer.modify_file
       puts "wrote to file #{file}"
     end
@@ -21,7 +21,7 @@ class HocrLayer < ActiveRecord::Base
 
   # opens hocr_layer file and calls method for modifications
   def modify_file
-    file_path = "./app/views/hocr_files/#{self.filename}_hocr.html"
+    file_path = "./app/views/hocr_files/_p#{self.filename}_hocr.html"
     file = File.open(file_path, "r")
     data = file.read
     data = self.replace_bbox(data)
