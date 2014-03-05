@@ -13,6 +13,7 @@ class HocrLayer < ActiveRecord::Base
     directory.each do |file|
       new_layer = HocrLayer.create(:filename => file[0..-11])
       new_layer.replace_bbox
+      new_layer.add_image
     end
   end
 
