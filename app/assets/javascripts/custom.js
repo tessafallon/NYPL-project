@@ -59,7 +59,7 @@ $(document).ready( function() {
       if (overlays.length > 0) {overlays.pop().remove()}
       overlays.push($overlay);  
     })
-    .on("mouseup", function(){
+    .on("mouseup", function(){  
       $(this).unbind("mousemove");
       $(".flag").find(".x-out").removeClass("hidden");
       $(".x-out").on("click", function(){
