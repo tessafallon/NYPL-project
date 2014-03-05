@@ -7,12 +7,15 @@ class HocrLayer < ActiveRecord::Base
 
  # create hocr_layer objects in database with filenames
   def self.create_hocr_objects
-    directory = Dir.new("./public/hocr_files").entries.select do |f|
+    puts "creating hocr objects: in the method"
+    directory = Dir.new("./app/views/hocr_files").entries.select do |f|
       !File.directory?(f) && !f.start_with?(".")
     end
     directory.each do |file|
+      puts "opening file: #{file}"
       new_layer = HocrLayer.create(:filename => file[0..-11])
       new_layer.modify_file
+      puts "wrote to file #{file}"
     end
   end
 
