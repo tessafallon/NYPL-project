@@ -34,7 +34,8 @@ class HocrLayer < ActiveRecord::Base
 
   # links site version of image at the top of the hocr_layer file
   def add_image(data)
-
+    regex = /(?<=ppageno\s0'>)/
+    data.gsub(regex) {"\n<img src='./page_images/#{self.filename}.jpg'>"}
   end
 
   # identifies start of a claim and creates new claim object for each record number
