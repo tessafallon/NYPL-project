@@ -1,11 +1,9 @@
 class Image < ActiveRecord::Base
   has_one :hocr_layer
 
-  def self.create_images
-    #Parse through all image files
-    #Create hocr_layer associations
-  end
 
+  # the high quality files will be somewhere locally, pass in this path
+  # this method will run tesseract and save hocr and ocr files in public
   def self.run_ocrs(path)
     img_filenames = Dir.new(path).entries.select do |f|
       !File.directory?(f) && !f.start_with?(".")
@@ -14,6 +12,13 @@ class Image < ActiveRecord::Base
       system "tesseract #{File.join(path, file)} #{Rails.public_path}/ocr_files/#{file[0..-5]}_ocr -l eng"
       system "tesseract #{File.join(path, file)} #{Rails.public_path}/hocr_files/#{file[0..-5]}_hocr -l eng hocr"
     end
+  end
+
+  # before this happens we need to run a script to crop all the images
+  # and create 1/5th sized versions to store in public folder
+  def self.create_images
+    #Parse through all image files (1/5th versions)
+    #Create hocr_layer associations <-- can't happen before create_hocr_objects is run (hocr_layer.rb)
   end
 
 end

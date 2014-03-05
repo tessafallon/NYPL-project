@@ -12,19 +12,29 @@ class HocrLayer < ActiveRecord::Base
     end
     directory.each do |file|
       new_layer = HocrLayer.create(:filename => file[0..-11])
-      new_layer.replace_bbox
-      new_layer.add_image
+      new_layer.modify_file
     end
   end
 
-  # adds inline style coordinates to hocr words
-  def replace_bbox
+  # opens hocr_layer file and calls method for modifications
+  def modify_file
     file_path = "./public/hocr_files/#{self.filename}_hocr.html"
     file = File.open(file_path, "r")
     data = file.read
-    regex = /(id='word_\d+')\s(title="\w{4}\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)")/
-    data = data.gsub(regex) {"#{$1} style='left: #{$3.to_i/5}px\; top: #{$4.to_i/5}px\;'"}
+    data = self.replace_bbox(data)
+    data = self.add_image(data)
     File.open(file_path, 'w') {|f| f.write(data) }
+  end
+
+  # adds inline style coordinates to hocr words
+  def replace_bbox(data)
+    regex = /(id='word_\d+')\s(title="\w{4}\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)")/
+    data.gsub(regex) {"#{$1} style='left: #{$3.to_i/5}px\; top: #{$4.to_i/5}px\;'"}
+  end
+
+  # links site version of image at the top of the hocr_layer file
+  def add_image(data)
+
   end
 
   # identifies start of a claim and creates new claim object for each record number
