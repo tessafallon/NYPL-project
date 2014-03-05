@@ -45,7 +45,7 @@ class HocrLayer < ActiveRecord::Base
   def self.identify_claims
     current_claim = nil
     self.all.each do |hocr_layer|
-      file = File.open("./public/ocr_files/#{hocr_layer.filename}_ocr.txt", "r")
+      file = File.open("#{Rails.root}/public/ocr_files/#{hocr_layer.filename}_ocr.txt", "r")
       data = file.read
       record_info = /.*\(Record\sNo.\s(\d+),\sof\s1863\.\).*/.match(data)
       # report_info = //.match(data)

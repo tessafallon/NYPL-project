@@ -82,4 +82,13 @@ $(document).ready( function() {
     }
   });
 
+  $('.hocr_toggle').on("click", function(){
+    var $ocr_page = $('.ocr_page')
+    if ($ocr_page.hasClass('transparent')){
+      $('.ocr_page').removeClass('transparent');
+    }else{
+      $('.ocr_page').addClass('transparent');
+    }
+  });
+
 });
