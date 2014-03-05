@@ -76,4 +76,4 @@
 
 .transcribe-image-holder
   / - Claim.find(params[:id]).hocr_layers.each do |hocr_layer|
-  - render :partial => "/hocr_files/#{Claim.find(params[:id]).hocr_layers.first.filename}_hocr"
+  = render :file => "/hocr_files/_p#{Claim.find(params[:id]).hocr_layers.first.filename}_hocr"
