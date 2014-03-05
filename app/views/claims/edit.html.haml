@@ -75,4 +75,5 @@
       %button{:type=>"submit", :value=>"submit"} Transcribe!
 
 .transcribe-image-holder
-  %img{:src=>image_path("draft_riots_pg75.jpeg")}
+  / - Claim.find(params[:id]).hocr_layers.each do |hocr_layer|
+  - render :partial => "hocr_files/#{Claim.find(params[:id]).hocr_layers.first.filename}"

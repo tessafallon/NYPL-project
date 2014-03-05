@@ -18,7 +18,7 @@ class HocrLayer < ActiveRecord::Base
 
   # opens hocr_layer file and calls method for modifications
   def modify_file
-    file_path = "./public/hocr_files/#{self.filename}_hocr.html"
+    file_path = "./app/views/hocr_files/#{self.filename}_hocr.html"
     file = File.open(file_path, "r")
     data = file.read
     data = self.replace_bbox(data)
