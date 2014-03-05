@@ -5,19 +5,28 @@ class HocrLayer < ActiveRecord::Base
   has_many :claim_hocr_layers
   has_many :claims, :through => :claim_hocr_layers
 
- # before this method is called, need to run through hocr_files folder
- # and create hocr_layer objects with those filenames
-
- def self.create_hocr_objects
-  directory = Dir.new("./public/hocr_files").entries.select do |f|
-    !File.directory?(f) && !f.start_with?(".")
+ # create hocr_layer objects in database with filenames
+  def self.create_hocr_objects
+    directory = Dir.new("./public/hocr_files").entries.select do |f|
+      !File.directory?(f) && !f.start_with?(".")
+    end
+    directory.each do |file|
+      new_layer = HocrLayer.create(:filename => file[0..-11])
+      new_layer.replace_bbox
+    end
   end
-  directory.each do |file|
-    HocrLayer.create(:filename => file[0..-11])
+
+  # adds inline style coordinates to hocr words
+  def replace_bbox
+    file_path = "./public/hocr_files/#{self.filename}_hocr.html"
+    file = File.open(file_path, "r")
+    data = file.read
+    regex = /(id='word_\d+')\s(title="\w{4}\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)")/
+    data = data.gsub(regex) {"#{$1} style='left: #{$3.to_i/5}px\; top: #{$4.to_i/5}px\;'"}
+    File.open(file_path, 'w') {|f| f.write(data) }
   end
- end
 
-
+  # identifies start of a claim and creates new claim object for each record number
   def self.identify_claims
     self.all.each do |hocr_layer|
       current_claim = nil
@@ -31,7 +40,7 @@ class HocrLayer < ActiveRecord::Base
       end
       if current_claim
         hocr_layer.link_claim(current_claim)
-        hocr_layer.create_claim(current_claim, data)
+        hocr_layer.populate_claim(current_claim, data)
       end
     end
   end
@@ -45,7 +54,8 @@ class HocrLayer < ActiveRecord::Base
     self.save
   end
 
-  def create_claim(claim, data)
+  # populates claim info in database
+  def populate_claim(claim, data)
     # grab name
     claimant = /.*CLAIM\sOF\s(\w+\s+\w+)\.\W*\(Record\sNo\.\s\d+,\sof\s1863\.\).*/.match(data)
     if claimant
@@ -56,14 +66,6 @@ class HocrLayer < ActiveRecord::Base
     claim.save
   end
 
-  def replace_bbox
-    file_path = "./public/hocr_files/#{self.filename}_hocr.html"
-    file = File.open(file_path, "r")
-    data = file.read
-    regex = /(id='word_\d+')\s(title="\w{4}\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)")/
-    data = data.gsub(regex) {"#{$1} style='left: #{$3.to_i/5}px\; top: #{$4.to_i/5}px\;'"}
-    File.open(file_path, 'w') {|f| f.write(data) }
-  end
 
 end
 
