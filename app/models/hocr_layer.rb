@@ -61,7 +61,7 @@ class HocrLayer < ActiveRecord::Base
     file = File.open(file_path, "r")
     data = file.read
     regex = /(id='word_\d+')\s(title="\w{4}\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)")/
-    data = data.gsub(regex,"\\1 style='left: \\3px\; top: \\4px\;'")
+    data = data.gsub(regex) {"#{$1} style='left: #{$3.to_i/5}px\; top: #{$4.to_i/5}px\;'"}
     File.open(file_path, 'w') {|f| f.write(data) }
   end
 
