@@ -17,13 +17,13 @@ task :run_ocrs, [:path] => [:environment] do |t, args|
 end
 
 desc "create hocr_layer objects in database and modify files"
-task :hocr_objects do
+task :hocr_objects => :environment do
   puts "creating hocr objects"
   HocrLayer.create_hocr_objects
 end
 
 desc "identifies start of a claim and creates new claim object for each record number"
-task :claim_objects do
+task :claim_objects => :environment do
   puts "creating claim objects"
   HocrLayer.identify_claims
 end

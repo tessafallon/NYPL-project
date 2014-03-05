@@ -43,12 +43,17 @@ class HocrLayer < ActiveRecord::Base
 
   # identifies start of a claim and creates new claim object for each record number
   def self.identify_claims
+    current_claim = nil
     self.all.each do |hocr_layer|
-      current_claim = nil
       file = File.open("./public/ocr_files/#{hocr_layer.filename}_ocr.txt", "r")
       data = file.read
       record_info = /.*\(Record\sNo.\s(\d+),\sof\s1863\.\).*/.match(data)
+      report_info = //.match(data)
       if record_info
+        if /.*REPORT.*\(Record\sNo.\s(\d+),\sof\s1863\.\).*/m.match(data)
+          hocr_layer.link_claim(current_claim)
+          hocr_layer.populate_claim(current_claim, data)
+        end
         # this is the start of a claim
         current_record = record_info[1].to_i
         current_claim = Claim.create(:record_number => current_record)
