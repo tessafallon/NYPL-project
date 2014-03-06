@@ -10,6 +10,8 @@ $(document).ready( function() {
   var boxColor = "";
   var description = "";
 
+  $(".ocrx_word").addClass('transparent');
+
   $img.on("dragstart", function() {
     return false;
   });
@@ -83,12 +85,26 @@ $(document).ready( function() {
   });
 
   $('.hocr_toggle').on("click", function(){
-    var $ocr_page = $('.ocr_page')
-    if ($ocr_page.hasClass('transparent')){
-      $ocr_page.removeClass('transparent');
+    var $ocrx_word = $('.ocrx_word');
+    if ($ocrx_word.hasClass('transparent')){
+      $ocrx_word.removeClass('transparent');
     }else{
-      $ocr_page.addClass('transparent');
+      $ocrx_word.addClass('transparent');
     }
   });
 
+  $('.ocrx_word').on("click", function(e){
+    var $this = $(this);
+    if ($this.hasClass('transparent')){
+      $this.removeClass('transparent');
+    }else{
+      $this.addClass('transparent');
+      }
+  });
+
 });
+
+
+
+
+
